@@ -87,8 +87,7 @@ public class UserVersion1 implements Method {
         public void update () {
 
             for (EcommerceUser task : EcommerceUser.usersList) {
-                StringBuilder sb = new StringBuilder();
-                System.out.print("ENTER THE EMAIL | PASSWORD | CUSTOMER | ADMIN  : ");
+                System.out.print("ENTER THE EMAIL | PASSWORD | ROLE  : ");
                 String up =scanner.nextLine();
 
                 if (up.equalsIgnoreCase("email")) {
@@ -98,21 +97,23 @@ public class UserVersion1 implements Method {
                     if (task.getEmail().equalsIgnoreCase(ori_email)) {
                         System.out.print("enter the NEW email : ");
                         String new_email = scanner.nextLine();
-                        sb.append(new_email) ;
                         task.setEmail(new_email);
                     }
 
                 } else if (up.equalsIgnoreCase("password")) {
-                    System.out.print("enter the original password : ");
-                    String ori_password = scanner.nextLine();
-                    if (task.getPassword().equalsIgnoreCase(ori_password)) {
-                        System.out.print("enter the new password  : ");
-                        String new_password = scanner.nextLine();
-                        sb.append(new_password);
-                        task.setPassword(new_password);
+                    System.out.print("ENTER THE EMAIL  : ");
+                    String email = scanner.nextLine();
+                    if (task.getEmail().equalsIgnoreCase(email)) {
+                        System.out.print("enter the original password : ");
+                        String ori_password = scanner.nextLine();
+                        if (task.getPassword().equalsIgnoreCase(ori_password)) {
+                            System.out.print("enter the new password  : ");
+                            String new_password = scanner.nextLine();
+                            task.setPassword(new_password);
+                        }
                     }
 
-                } else if (up.equalsIgnoreCase("customer") || up.equalsIgnoreCase("admin")) {
+                } else if (up.equalsIgnoreCase("role")) {
                     System.out.print("ENTER THE EMAIL IN A ROLE UPDATE : ");
                     String sameemail = scanner.nextLine();
                     if (task.getEmail().equalsIgnoreCase(sameemail)) {
@@ -121,7 +122,6 @@ public class UserVersion1 implements Method {
                         if (task.getRole().equalsIgnoreCase(ori_role)) {
                             System.out.print("enter the new role  : ");
                             String new_role = scanner.nextLine();
-                            sb.append(new_role);
                             task.setRole(new_role);
                         }
 
