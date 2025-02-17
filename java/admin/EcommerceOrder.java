@@ -62,11 +62,16 @@ public class EcommerceOrder implements OrderMethod {
 
         product.productView();
 
-        System.out.print("ENTER THE | buy | ORDER VIEW  | EXIT: ");
+        System.out.print("ENTER THE | buy | addtocart | ORDER VIEW  | EXIT: ");
         String buy = scanner.nextLine();
 
         if (buy.equalsIgnoreCase("buy")) {
             EcommerceOrderTask order = product.sellProduct();
+        } else if (buy.equalsIgnoreCase("addtocart")) {
+            product.addToCart();
+
+        } else if (buy.equalsIgnoreCase("show")) {
+            product.showCart();
         } else if (buy.equalsIgnoreCase("orderview")) {
 
             for (EcommerceOrderTask order : EcommerceOrderTask.orderList) {

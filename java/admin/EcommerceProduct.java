@@ -1,16 +1,21 @@
 package admin;
 
+import tasks.AddToCartTask;
 import tasks.EcommerceOrderTask;
 import tasks.EcommerceProductTask;
 import tasks.EcommerceUser;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import static tasks.AddToCartTask.addToCart;
 
 public class EcommerceProduct implements ProductMethod {
 
     Scanner scanner = new Scanner(System.in);
    ArrayList<EcommerceProductTask> product = new ArrayList<>();
+
    @Override
     public void addProduct(){
 
@@ -38,7 +43,7 @@ public class EcommerceProduct implements ProductMethod {
     }
 
 @Override
-    public void productView() {
+    public  void productView() {
         for (EcommerceProductTask task : product) {
 
             System.out.println(task.productPrint());
@@ -123,8 +128,28 @@ public class EcommerceProduct implements ProductMethod {
             break;
         }
     }
+    public void addToCart(){
 
+            if (EcommerceUser.getCurrentUser() != null) {
+                for (EcommerceProductTask task : product) {
+                    System.out.println("enter ");
+                    String productName = scanner.nextLine();
+                    if (task.getProductName().equalsIgnoreCase(productName)) {
 
-
+                        addToCart.put(EcommerceUser.getCurrentUser(), List.of(task));
+                        System.out.println("THE ADD TO CART SUCCESSFULLY : ");
+                    }
+                    else {
+                        System.out.println("product not available");
+                    }
+                }
+        }
     }
+    public void showCart(){
+            System.out.println(addToCart.get(EcommerceUser.getCurrentUser()));
+    }
+
+
+
+}
 
