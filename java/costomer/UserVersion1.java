@@ -30,6 +30,13 @@ public class UserVersion1 implements Method {
         System.out.print("Enter the role (admin/customer): ");
         String role = scanner.nextLine();
 
+        for(EcommerceUser user : EcommerceUser.usersList) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                System.out.println("user already exist");
+                return;
+            }
+        }
+
         EcommerceUser tasks = new EcommerceUser(email, password, role);
         EcommerceUser.usersList.add(tasks);
 
