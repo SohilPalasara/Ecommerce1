@@ -62,7 +62,7 @@ public class EcommerceOrder implements OrderMethod {
 
         product.productView();
 
-        System.out.print("ENTER THE | buy | addtocart | ORDER VIEW  | EXIT: ");
+        System.out.print("ENTER THE | buy | addtocart | showcart | ORDER VIEW  | EXIT: ");
         String buy = scanner.nextLine();
 
         if (buy.equalsIgnoreCase("buy")) {
@@ -70,7 +70,7 @@ public class EcommerceOrder implements OrderMethod {
         } else if (buy.equalsIgnoreCase("addtocart")) {
             product.addToCart();
 
-        } else if (buy.equalsIgnoreCase("show")) {
+        } else if (buy.equalsIgnoreCase("showcart")) {
             product.showCart();
         } else if (buy.equalsIgnoreCase("orderview")) {
 
